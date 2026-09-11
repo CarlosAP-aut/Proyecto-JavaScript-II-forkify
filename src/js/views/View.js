@@ -1,7 +1,6 @@
-import icons from 'url:../../img/icons.svg';
-
 export default class View {
   _data;
+  _iconsPath = './src/img/icons.svg';
 
   render(data) {
     if (!data || (Array.isArray(data) && data.length === 0))
@@ -17,7 +16,7 @@ export default class View {
     const markup = `
     <div class="spinner">
       <svg>
-        <use href="${icons}#icon-loader"></use>
+        <use href="${this._iconsPath}#icon-loader"></use>
       </svg>
     </div>
   `;
@@ -30,7 +29,7 @@ export default class View {
     <div class="error">
       <div>
         <svg>
-          <use href="${icons}#icon-alert-triangle"></use>
+          <use href="${this._iconsPath}#icon-alert-triangle"></use>
         </svg>
       </div>
       <p>${message}</p>
@@ -45,7 +44,7 @@ export default class View {
     <div class="message">
       <div>
         <svg>
-          <use href="${icons}#icon-smile"></use>
+          <use href="${this._iconsPath}#icon-smile"></use>
         </svg>
       </div>
       <p>${message}</p>
