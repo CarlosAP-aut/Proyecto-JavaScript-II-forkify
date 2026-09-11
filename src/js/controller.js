@@ -41,8 +41,14 @@ const controlSearchResults = async function () {
   }
 };
 
+const controlUpdateServings = function (newServings) {
+  model.updateServings(newServings);
+  recipeView.render(model.state.recipe);
+};
+
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
+  recipeView.addHandlerUpdateServings(controlUpdateServings);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(function (page) {
     resultsView.render(model.getSearchResultsPage(page));

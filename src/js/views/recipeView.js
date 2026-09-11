@@ -11,6 +11,23 @@ class RecipeView extends View {
     ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
   }
 
+  addHandlerUpdateServings(handler) {
+    this._parentElement.addEventListener('click', function (e) {
+      const btn = e.target.closest('.btn--increase-servings');
+      if (!btn) return;
+
+      const updateTo = btn.parentElement.parentElement.querySelector(
+        '.recipe__info-data--people'
+      );
+      const currentServings = +updateTo.textContent;
+
+      const isIncrease = btn.querySelector('use').getAttribute('href').includes('plus');
+      const newServings = isIncrease ? currentServings + 1 : currentServings - 1;
+
+      if (newServings > 0) handler(newServings);
+    });
+  }
+
   _generateMarkup() {
     return `
         <figure class="recipe__fig">
