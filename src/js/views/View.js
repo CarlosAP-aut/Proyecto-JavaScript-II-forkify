@@ -1,6 +1,8 @@
+import iconsPath from 'url:../../img/icons.svg';
+
 export default class View {
   _data;
-  _iconsPath = './src/img/icons.svg';
+  _iconsPath = iconsPath;
 
   render(data) {
     if (!data || (Array.isArray(data) && data.length === 0))
